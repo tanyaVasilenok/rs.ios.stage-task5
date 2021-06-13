@@ -17,6 +17,40 @@ public final class Knapsack {
     }
     
     func findMaxKilometres() -> Int {
-        return -1
+        
+        var foodAndDrinkArray = Array<Array<Int>>()
+        var bestDistanse = 0
+        let distancesArray = Array<Int>()
+        
+        for food in foods {
+            for drink in drinks {
+                if (food.weight + drink.weight) <= maxWeight {
+                    var tmpFoodAndDrink = Array<Int>()
+//                    tmpFoodAndDrink.append(food.weight)
+                    tmpFoodAndDrink.append(food.value)
+//                    tmpFoodAndDrink.append(drink.weight)
+                    tmpFoodAndDrink.append(drink.value)
+                    foodAndDrinkArray.append(tmpFoodAndDrink)
+                }
+            }
+        }
+        
+        print(foodAndDrinkArray)
+        
+        var tmpArray = Array<Int>()
+        
+        for i in foodAndDrinkArray {
+            for _ in i {
+                tmpArray.append(i.min()!)
+            }
+        }
+        
+        
+        print(distancesArray)
+        
+        bestDistanse = tmpArray.max() ?? 0
+       
+        
+        return bestDistanse
     }
 }
